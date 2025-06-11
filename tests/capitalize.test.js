@@ -51,3 +51,7 @@ it('should capitalize only the first character in a mixed-case word', () => {
 it('should return the original string if it starts with a number', () => {
   expect(capitalize('42answer')).toBe('42answer')
 })
+
+it('should not modify strings that start with a space', () => {
+  expect(capitalize(' space')).toBe(' space')
+})
