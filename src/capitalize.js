@@ -3,6 +3,8 @@ export const capitalize = (word) => {
     throw new TypeError('capitalize: input must be a string')
   } else if (typeof word === 'boolean') {
     throw new TypeError('capitalize: input must be a non-boolean string')
+  } else if (Array.isArray(word)) {
+    throw new TypeError('capitalize: input must not be an array')
   } else if (word === '') {
     throw new TypeError('capitalize: input must be a non-empty string')
   } else if (word == null) {

@@ -28,3 +28,6 @@ it('should throw a TypeError if input is a Boolean', () => {
   expect(() => capitalize(true)).toThrow('capitalize: input must be a non-boolean string')
 })
 
+it('should throw a TypeError if input is an Array', () => {
+  expect(() => capitalize([1, 2, 3, 4, 5])).toThrow('capitalize: input must not be an array')
+})
