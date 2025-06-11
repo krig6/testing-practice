@@ -31,3 +31,8 @@ it('should throw a TypeError if input is a Boolean', () => {
 it('should throw a TypeError if input is an Array', () => {
   expect(() => capitalize([1, 2, 3, 4, 5])).toThrow('capitalize: input must not be an array')
 })
+
+it('should throw a TypeError if input is an Object', () => {
+  expect(() => capitalize({ language: 'JavaScript' })).toThrow('capitalize: input must not be an object')
+})
+
