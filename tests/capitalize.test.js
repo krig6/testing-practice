@@ -55,3 +55,11 @@ it('should return the original string if it starts with a number', () => {
 it('should not modify strings that start with a space', () => {
   expect(capitalize(' space')).toBe(' space')
 })
+
+it('should return the original string if it starts with a tab character', () => {
+  expect(capitalize('\tTabbed')).toBe('\tTabbed')
+})
+
+it('should return the original string if it starts with a newline character', () => {
+  expect(capitalize('\nLine')).toBe('\nLine')
+})
