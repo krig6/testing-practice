@@ -23,3 +23,8 @@ it('should throw a TypeError if input is an empty string', () => {
 it('should throw a TypeError if input is a number', () => {
   expect(() => capitalize(123)).toThrow('capitalize: input must be a string')
 })
+
+it('should throw a TypeError if input is a Boolean', () => {
+  expect(() => capitalize(true)).toThrow('capitalize: input must be a non-boolean string')
+})
+

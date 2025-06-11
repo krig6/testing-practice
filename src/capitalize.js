@@ -1,6 +1,8 @@
 export const capitalize = (word) => {
   if (typeof word === 'number') {
     throw new TypeError('capitalize: input must be a string')
+  } else if (typeof word === 'boolean') {
+    throw new TypeError('capitalize: input must be a non-boolean string')
   } else if (word === '') {
     throw new TypeError('capitalize: input must be a non-empty string')
   } else if (word == null) {
