@@ -7,3 +7,7 @@ it('should capitalize a single letter', () => {
 it('should capitalize different letters', () => {
   expect(capitalize('b')).toBe('B')
 })
+
+it('should return the original string if it does not start with a letter', () => {
+  expect(capitalize('#version')).toBe('#version')
+})
