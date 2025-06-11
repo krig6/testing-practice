@@ -39,3 +39,7 @@ it('should throw a TypeError if input is an Object', () => {
 it('should capitalize first character of multi-word strings', () => {
   expect(capitalize('hello world')).toBe('Hello world')
 })
+
+it('should return the string unchanged if it is already capitalized', () => {
+  expect(capitalize('Node')).toBe('Node')
+})
