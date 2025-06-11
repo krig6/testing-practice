@@ -43,3 +43,7 @@ it('should capitalize first character of multi-word strings', () => {
 it('should return the string unchanged if it is already capitalized', () => {
   expect(capitalize('Node')).toBe('Node')
 })
+
+it('should capitalize only the first character in a mixed-case word', () => {
+  expect(capitalize('tEsTiNg')).toBe('TEsTiNg')
+})
