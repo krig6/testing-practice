@@ -47,3 +47,7 @@ it('should return the string unchanged if it is already capitalized', () => {
 it('should capitalize only the first character in a mixed-case word', () => {
   expect(capitalize('tEsTiNg')).toBe('TEsTiNg')
 })
+
+it('should return the original string if it starts with a number', () => {
+  expect(capitalize('42answer')).toBe('42answer')
+})
