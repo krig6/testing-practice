@@ -36,3 +36,6 @@ it('should throw a TypeError if input is an Object', () => {
   expect(() => capitalize({ language: 'JavaScript' })).toThrow('capitalize: input must not be an object')
 })
 
+it('should capitalize first character of multi-word strings', () => {
+  expect(capitalize('hello world')).toBe('Hello world')
+})
