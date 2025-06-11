@@ -1,23 +1,42 @@
-export const capitalize = (word) => {
-  if (typeof word === 'number') {
-    throw new TypeError('capitalize: input must be a string')
-  } else if (typeof word === 'boolean') {
-    throw new TypeError('capitalize: input must be a non-boolean string')
-  } else if (Array.isArray(word)) {
-    throw new TypeError('capitalize: input must not be an array')
-  } else if (typeof word === 'object') {
-    throw new TypeError('capitalize: input must not be an object')
-  } else if (word === '') {
-    throw new TypeError('capitalize: input must be a non-empty string')
-  } else if (word == null) {
-    throw new TypeError('capitalize: input must be a non-null string')
-  }
+export const capitalize = (str) => {
+  validateInput(str)
 
-  let firstChar = word.charAt(0)
-
-  if (!/[a-zA-Z]/.test(firstChar)) {
-    return word
-  }
-
-  return firstChar.toUpperCase() + word.slice(1)
+  const firstChar = str.charAt(0)
+  return !/[a-zA-Z]/.test(firstChar)
+    ? str
+    : firstChar.toUpperCase() + str.slice(1)
 }
+
+const validateInput = (str) => {
+  if (typeof str === 'undefined') {
+    throw new TypeError(createErrorMessage('undefined'))
+  }
+  if (str === null) {
+    throw new TypeError(createErrorMessage('null'))
+  }
+  if (str === '') {
+    throw new TypeError(createErrorMessage('empty'))
+  }
+  if (Array.isArray(str)) {
+    throw new TypeError(createErrorMessage('array'))
+  }
+  if (typeof str !== 'string') {
+    throw new TypeError(createErrorMessage(typeof str))
+  }
+}
+
+const createErrorMessage = (inputType) => {
+  const errorMessages = {
+    'number': 'capitalize: expected string, received number',
+    'boolean': 'capitalize: expected string, received boolean',
+    'object': 'capitalize: expected string, received object',
+    'null': 'capitalize: expected string, received null',
+    'undefined': 'capitalize: expected string, received undefined',
+    'array': 'capitalize: expected string, received array',
+    'empty': 'capitalize: expected non-empty string'
+  }
+
+  return errorMessages[inputType] || 'capitalize: unexpected input type'
+}
+
+
