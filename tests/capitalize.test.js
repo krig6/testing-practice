@@ -1,65 +1,73 @@
 import { capitalize } from "../src/capitalize"
 
-it('should capitalize a single letter', () => {
-  expect(capitalize('a')).toBe('A')
+describe('capitalize', () => {
+  describe('valid inputs', () => {
+    it('capitalizes a single letter', () => {
+      expect(capitalize('z')).toBe('Z')
+    })
+
+    it('capitalizes only the first character in a mixed-case word', () => {
+      expect(capitalize('jAvAsCrIpT')).toBe('JAvAsCrIpT')
+    })
+
+    it('capitalizes first character of a multi-word string', () => {
+      expect(capitalize('hello world')).toBe('Hello world')
+    })
+  })
+
+  describe('strings that should remain unchanged', () => {
+    it('returns the original string if it starts with special characters', () => {
+      expect(capitalize('#blessed')).toBe('#blessed')
+    })
+
+    it('returns the original string if it starts with a number', () => {
+      expect(capitalize('404notfound')).toBe('404notfound')
+    })
+
+    it('returns the original string if it is already capitalized', () => {
+      expect(capitalize('JavaScript')).toBe('JavaScript')
+    })
+
+    it('returns the original string if it is a single special character', () => {
+      expect(capitalize('$')).toBe('$')
+    })
+
+    it('returns the original string if it starts with whitespace', () => {
+      expect(capitalize('   indented')).toBe('   indented')
+      expect(capitalize(' tabby')).toBe(' tabby')
+      expect(capitalize('\tfunction')).toBe('\tfunction')
+      expect(capitalize('\nnewline')).toBe('\nnewline')
+    })
+  })
+
+  describe('error handling', () => {
+    it('throws a TypeError if input is undefined', () => {
+      expect(() => capitalize()).toThrow('capitalize: expected string, received undefined')
+    })
+
+    it('throws a TypeError if input is an empty string', () => {
+      expect(() => capitalize('')).toThrow('capitalize: expected non-empty string')
+    })
+
+    it('throws a TypeError if input is null', () => {
+      expect(() => capitalize(null)).toThrow('capitalize: expected string, received null')
+    })
+
+    it('throws a TypeError if input is a number', () => {
+      expect(() => capitalize(1337)).toThrow('capitalize: expected string, received number')
+    })
+
+    it('throws a TypeError if input is a boolean', () => {
+      expect(() => capitalize(false)).toThrow('capitalize: expected string, received boolean')
+    })
+
+    it('throws a TypeError if input is an array', () => {
+      expect(() => capitalize(['not', 'a', 'string'])).toThrow('capitalize: expected string, received array')
+    })
+
+    it('throws a TypeError if input is an object', () => {
+      expect(() => capitalize({ framework: 'React' })).toThrow('capitalize: expected string, received object')
+    })
+  })
 })
 
-it('should capitalize different letters', () => {
-  expect(capitalize('b')).toBe('B')
-})
-
-it('should return the original string if it does not start with a letter', () => {
-  expect(capitalize('#version')).toBe('#version')
-})
-
-it('should throw a TypeError if input is null or undefined', () => {
-  expect(() => capitalize()).toThrow('capitalize: input must be a non-null string')
-})
-
-it('should throw a TypeError if input is an empty string', () => {
-  expect(() => capitalize('')).toThrow('capitalize: input must be a non-empty string')
-})
-
-it('should throw a TypeError if input is a number', () => {
-  expect(() => capitalize(123)).toThrow('capitalize: input must be a string')
-})
-
-it('should throw a TypeError if input is a Boolean', () => {
-  expect(() => capitalize(true)).toThrow('capitalize: input must be a non-boolean string')
-})
-
-it('should throw a TypeError if input is an Array', () => {
-  expect(() => capitalize([1, 2, 3, 4, 5])).toThrow('capitalize: input must not be an array')
-})
-
-it('should throw a TypeError if input is an Object', () => {
-  expect(() => capitalize({ language: 'JavaScript' })).toThrow('capitalize: input must not be an object')
-})
-
-it('should capitalize first character of multi-word strings', () => {
-  expect(capitalize('hello world')).toBe('Hello world')
-})
-
-it('should return the string unchanged if it is already capitalized', () => {
-  expect(capitalize('Node')).toBe('Node')
-})
-
-it('should capitalize only the first character in a mixed-case word', () => {
-  expect(capitalize('tEsTiNg')).toBe('TEsTiNg')
-})
-
-it('should return the original string if it starts with a number', () => {
-  expect(capitalize('42answer')).toBe('42answer')
-})
-
-it('should not modify strings that start with a space', () => {
-  expect(capitalize(' space')).toBe(' space')
-})
-
-it('should return the original string if it starts with a tab character', () => {
-  expect(capitalize('\tTabbed')).toBe('\tTabbed')
-})
-
-it('should return the original string if it starts with a newline character', () => {
-  expect(capitalize('\nLine')).toBe('\nLine')
-})
