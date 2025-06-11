@@ -19,3 +19,7 @@ it('should throw a TypeError if input is null or undefined', () => {
 it('should throw a TypeError if input is an empty string', () => {
   expect(() => capitalize('')).toThrow('capitalize: input must be a non-empty string')
 })
+
+it('should throw a TypeError if input is a number', () => {
+  expect(() => capitalize(123)).toThrow('capitalize: input must be a string')
+})
