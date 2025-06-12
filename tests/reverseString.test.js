@@ -35,3 +35,7 @@ it('reverses a string that includes tab characters', () => {
 it('reverses a string that includes newline characters', () => {
   expect(reverseString('\nnewline')).toBe('enilwen\n')
 })
+
+it('throws a TypeError if input is undefined', () => {
+  expect(() => reverseString()).toThrow('reverseString: expected string, received undefined')
+})
