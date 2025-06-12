@@ -39,3 +39,7 @@ it('reverses a string that includes newline characters', () => {
 it('throws a TypeError if input is undefined', () => {
   expect(() => reverseString()).toThrow('reverseString: expected string, received undefined')
 })
+
+it('throws a TypeError if input is null', () => {
+  expect(() => reverseString(null)).toThrow('reverseString: expected string, received null')
+})
