@@ -8,9 +8,12 @@ export const reverseString = (str) => {
   if (str === '') {
     throw new TypeError('reverseString: expected non-empty string')
   }
-
   if (typeof str === 'number') {
     throw new TypeError('reverseString: expected string, received number')
+  }
+
+  if (typeof str === 'boolean') {
+    throw new TypeError('reverseString: expected string, received boolean')
   }
   return str.split('').reverse().join('')
 }
