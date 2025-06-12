@@ -11,9 +11,11 @@ export const reverseString = (str) => {
   if (typeof str === 'number') {
     throw new TypeError('reverseString: expected string, received number')
   }
-
   if (typeof str === 'boolean') {
     throw new TypeError('reverseString: expected string, received boolean')
+  }
+  if (Array.isArray(str)) {
+    throw new TypeError('reverseString: expected string, received array')
   }
   return str.split('').reverse().join('')
 }

@@ -55,3 +55,7 @@ it('throws a TypeError if input is a number', () => {
 it('throws a TypeError if input is a boolean', () => {
   expect(() => reverseString(false)).toThrow('reverseString: expected string, received boolean')
 })
+
+it('throws a TypeError if input is an array', () => {
+  expect(() => reverseString(['this', 'is', 'an', 'array'])).toThrow('reverseString: expected string, received array')
+})
