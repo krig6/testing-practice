@@ -31,3 +31,7 @@ it('reverses a string with mixed uppercase and lowercase letters', () => {
 it('reverses a string that includes tab characters', () => {
   expect(reverseString('\ttab')).toBe('bat\t')
 })
+
+it('reverses a string that includes newline characters', () => {
+  expect(reverseString('\nnewline')).toBe('enilwen\n')
+})
