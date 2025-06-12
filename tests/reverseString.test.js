@@ -7,3 +7,7 @@ it('returns a single character unchanged', () => {
 it('reverses a multi-character string', () => {
   expect(reverseString('hello')).toBe('olleh')
 })
+
+it('reverses a string containing spaces', () => {
+  expect(reverseString('foo bar')).toBe('rab oof')
+})
