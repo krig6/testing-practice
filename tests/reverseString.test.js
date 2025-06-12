@@ -23,3 +23,11 @@ it('reverses a string containing symbols', () => {
 it('reverses a string with mixed uppercase and lowercase letters', () => {
   expect(reverseString('GitHub')).toBe('buHtiG')
 })
+
+it('reverses a string with mixed uppercase and lowercase letters', () => {
+  expect(reverseString('GitHub')).toBe('buHtiG')
+})
+
+it('reverses a string that includes tab characters', () => {
+  expect(reverseString('\ttab')).toBe('bat\t')
+})
