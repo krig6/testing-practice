@@ -19,3 +19,7 @@ it('reverses a string containing numbers', () => {
 it('reverses a string containing symbols', () => {
   expect(reverseString('error!!')).toBe('!!rorre')
 })
+
+it('reverses a string with mixed uppercase and lowercase letters', () => {
+  expect(reverseString('GitHub')).toBe('buHtiG')
+})
