@@ -5,6 +5,9 @@ export const reverseString = (str) => {
   if (str === null) {
     throw new TypeError('reverseString: expected string, received null')
   }
+  if (str === '') {
+    throw new TypeError('reverseString: expected non-empty string')
+  }
   return str.split('').reverse().join('')
 }
 

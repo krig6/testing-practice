@@ -43,3 +43,7 @@ it('throws a TypeError if input is undefined', () => {
 it('throws a TypeError if input is null', () => {
   expect(() => reverseString(null)).toThrow('reverseString: expected string, received null')
 })
+
+it('throws a TypeError if input is an empty string', () => {
+  expect(() => reverseString('')).toThrow('reverseString: expected non-empty string')
+})
