@@ -47,3 +47,7 @@ it('throws a TypeError if input is null', () => {
 it('throws a TypeError if input is an empty string', () => {
   expect(() => reverseString('')).toThrow('reverseString: expected non-empty string')
 })
+
+it('throws a TypeError if input is a number', () => {
+  expect(() => reverseString(1337)).toThrow('reverseString: expected string, received number')
+})
