@@ -1,4 +1,4 @@
-export const reverseString = () => {
-  return 'a'
+export const reverseString = (str) => {
+  return str.split('').reverse().join('')
 }
 
