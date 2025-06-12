@@ -11,3 +11,7 @@ it('reverses a multi-character string', () => {
 it('reverses a string containing spaces', () => {
   expect(reverseString('foo bar')).toBe('rab oof')
 })
+
+it('reverses a string containing numbers', () => {
+  expect(reverseString('js2025')).toBe('5202sj')
+})
