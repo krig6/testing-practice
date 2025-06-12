@@ -59,3 +59,7 @@ it('throws a TypeError if input is a boolean', () => {
 it('throws a TypeError if input is an array', () => {
   expect(() => reverseString(['this', 'is', 'an', 'array'])).toThrow('reverseString: expected string, received array')
 })
+
+it('throws a TypeError if input is an object', () => {
+  expect(() => reverseString({ language: 'JavaScript' })).toThrow('reverseString: expected string, received object')
+})

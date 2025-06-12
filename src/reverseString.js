@@ -17,6 +17,10 @@ export const reverseString = (str) => {
   if (Array.isArray(str)) {
     throw new TypeError('reverseString: expected string, received array')
   }
+  if (typeof str === 'object') {
+    throw new TypeError('reverseString: expected string, received object')
+  }
+
   return str.split('').reverse().join('')
 }
 
