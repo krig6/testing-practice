@@ -41,3 +41,47 @@ it("adds positive zero and negative zero", () => {
 it("adds two very large numbers", () => {
   expect(calculator.add(1_000_000_000, 2_000_000_000)).toBe(3_000_000_000)
 })
+
+it("subtracts two positive integers", () => {
+  expect(calculator.subtract(100, 50)).toBe(50)
+})
+
+it("subtracts two negative integers", () => {
+  expect(calculator.subtract(-500, -500)).toBe(0)
+})
+
+it("subtracts a positive and a negative integer", () => {
+  expect(calculator.subtract(-500, 500)).toBe(-1000)
+})
+
+it("subtracts two zeros", () => {
+  expect(calculator.subtract(0, 0)).toBe(0)
+})
+
+it("subtracts a positive number and zero", () => {
+  expect(calculator.subtract(50, 0)).toBe(50)
+})
+
+it("subtracts a negative number and zero", () => {
+  expect(calculator.subtract(-35, 0)).toBe(-35)
+})
+
+it("subtracts a float and zero", () => {
+  expect(calculator.subtract(-35.5, 0)).toBe(-35.5)
+})
+
+it("subtracts two small floating-point numbers", () => {
+  expect(calculator.subtract(0.1, 0.2)).toBeCloseTo(-0.1)
+})
+
+it("subtracts two very large numbers", () => {
+  expect(calculator.subtract(1_000_000_000, 2_000_000_000)).toBe(-1_000_000_000)
+})
+
+it("subtracts a number from zero", () => {
+  expect(calculator.subtract(0, 5)).toBe(-5)
+})
+
+it("subtracts a negative number from zero", () => {
+  expect(calculator.subtract(0, -5)).toBe(5)
+})
