@@ -133,3 +133,47 @@ it("multiplies positive zero and negative zero", () => {
 it("multiplies two very large numbers", () => {
   expect(calculator.multiply(1_000_000, 2_000_000)).toBe(2_000_000_000_000)
 })
+
+it("returns the same number when divided by one", () => {
+  expect(calculator.divide(10, 1)).toBe(10)
+})
+
+it("divides a number by negative one", () => {
+  expect(calculator.divide(50, -1)).toBe(-50)
+})
+
+it("divides two positive integers", () => {
+  expect(calculator.divide(100, 50)).toBe(2)
+})
+
+it("returns a positive result for negative ÷ negative", () => {
+  expect(calculator.divide(-500, -500)).toBe(1)
+})
+
+it("divides a positive and a negative integer", () => {
+  expect(calculator.divide(-10, 10)).toBe(-1)
+})
+
+it("divides zero by a positive number", () => {
+  expect(calculator.divide(0, 100)).toBe(0)
+})
+
+it("returns zero when zero is divided by a negative number", () => {
+  expect(calculator.divide(0, -100)).toBeCloseTo(0)
+})
+
+it("handles integer divided by float precisely", () => {
+  expect(calculator.divide(99, 3.3)).toBe(30)
+})
+
+it("divides float by an integer", () => {
+  expect(calculator.divide(9.9, 3)).toBeCloseTo(3.3)
+})
+
+it("divides negative float by an integer", () => {
+  expect(calculator.divide(-7.5, 2)).toBe(-3.75)
+})
+
+it("divides positive number by a float", () => {
+  expect(calculator.divide(9, -3.0)).toBe(-3)
+})
