@@ -177,3 +177,11 @@ it("divides negative float by an integer", () => {
 it("divides positive number by a float", () => {
   expect(calculator.divide(9, -3.0)).toBe(-3)
 })
+
+it("divides small floats", () => {
+  expect(calculator.divide(0.0002, 0.0001)).toBeCloseTo(2)
+})
+
+it("divides a float by a negative float", () => {
+  expect(calculator.divide(4.4, -2.2)).toBe(-2)
+})
