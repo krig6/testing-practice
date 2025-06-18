@@ -13,6 +13,9 @@ class Calculator {
   }
 
   divide(x, y) {
+    if (Object.is(y, 0)) {
+      throw new Error("Cannot divide by zero")
+    }
     return x / y
   }
 }

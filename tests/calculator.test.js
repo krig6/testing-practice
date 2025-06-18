@@ -189,3 +189,15 @@ it("divides a float by a negative float", () => {
 it("handles floating-point rounding correctly", () => {
   expect(calculator.divide(0.3, 0.1)).toBeCloseTo(3)
 })
+
+it("throws when dividing negative zero by zero", () => {
+  expect(() => calculator.divide(-0, 0)).toThrow("Cannot divide by zero")
+})
+
+it("throws when dividing a negative number by zero", () => {
+  expect(() => calculator.divide(-35, 0)).toThrow("Cannot divide by zero")
+})
+
+it("throws when dividing a number by zero", () => {
+  expect(() => calculator.divide(99, 0)).toThrow("Cannot divide by zero")
+})
