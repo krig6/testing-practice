@@ -185,3 +185,7 @@ it("divides small floats", () => {
 it("divides a float by a negative float", () => {
   expect(calculator.divide(4.4, -2.2)).toBe(-2)
 })
+
+it("handles floating-point rounding correctly", () => {
+  expect(calculator.divide(0.3, 0.1)).toBeCloseTo(3)
+})
