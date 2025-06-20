@@ -201,3 +201,31 @@ it("throws when dividing a negative number by zero", () => {
 it("throws when dividing a number by zero", () => {
   expect(() => calculator.divide(99, 0)).toThrow("calculator: expected non-zero divisor")
 })
+
+it("throws if non-number is passed to add", () => {
+  expect(() => calculator.add(100, 'tiger')).toThrow("calculator: expected number, received string")
+})
+
+it("throws if boolean is passed to multiply", () => {
+  expect(() => calculator.multiply(true, 5)).toThrow("calculator: expected number, received boolean")
+})
+
+it("throws if null is passed to subtract", () => {
+  expect(() => calculator.subtract(null, 5)).toThrow("calculator: expected number, received null")
+})
+
+it("throws if undefined is passed to divide", () => {
+  expect(() => calculator.divide(10, undefined)).toThrow("calculator: expected number, received undefined")
+})
+
+it("throws if undefined is passed to divide", () => {
+  expect(() => calculator.divide('')).toThrow("calculator: expected non-empty input")
+})
+
+it('throws a TypeError if input is an array', () => {
+  expect(() => calculator.add(['not', 'a', 'string'])).toThrow('calculator: expected number, received array')
+})
+
+it('throws a TypeError if input is an object', () => {
+  expect(() => calculator.divide({ framework: 'React' })).toThrow('calculator: expected number, received object')
+})
