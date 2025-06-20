@@ -41,7 +41,7 @@ describe('reverseString', () => {
     })
 
     it('throws a TypeError if input is an empty string', () => {
-      expect(() => reverseString('')).toThrow('reverseString: expected non-empty string')
+      expect(() => reverseString('')).toThrow('reverseString: expected non-empty input')
     })
 
     it('throws a TypeError if input is a number', () => {

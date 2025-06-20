@@ -46,7 +46,7 @@ describe('capitalize', () => {
     })
 
     it('throws a TypeError if input is an empty string', () => {
-      expect(() => capitalize('')).toThrow('capitalize: expected non-empty string')
+      expect(() => capitalize('')).toThrow('capitalize: expected non-empty input')
     })
 
     it('throws a TypeError if input is null', () => {
