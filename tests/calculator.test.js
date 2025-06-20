@@ -191,13 +191,13 @@ it("handles floating-point rounding correctly", () => {
 })
 
 it("throws when dividing negative zero by zero", () => {
-  expect(() => calculator.divide(-0, 0)).toThrow("Cannot divide by zero")
+  expect(() => calculator.divide(-0, 0)).toThrow("calculator: expected non-zero divisor")
 })
 
 it("throws when dividing a negative number by zero", () => {
-  expect(() => calculator.divide(-35, 0)).toThrow("Cannot divide by zero")
+  expect(() => calculator.divide(-35, 0)).toThrow("calculator: expected non-zero divisor")
 })
 
 it("throws when dividing a number by zero", () => {
-  expect(() => calculator.divide(99, 0)).toThrow("Cannot divide by zero")
+  expect(() => calculator.divide(99, 0)).toThrow("calculator: expected non-zero divisor")
 })
