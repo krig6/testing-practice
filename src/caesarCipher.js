@@ -5,7 +5,7 @@ export const caesarCipher = (str, shift) => {
 
   for (let char of str) {
     if (LOWERCASE_LETTERS.includes(char)) {
-      result.push(LOWERCASE_LETTERS[(LOWERCASE_LETTERS.indexOf(char) + shift)])
+      result.push(LOWERCASE_LETTERS[(LOWERCASE_LETTERS.indexOf(char) + shift) % 26])
     }
   }
 
