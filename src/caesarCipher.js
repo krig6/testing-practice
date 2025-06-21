@@ -1,5 +1,15 @@
 export const caesarCipher = (str, shift) => {
-  if (str === 'a' && shift === 1) return 'b'
+  const LOWERCASE_LETTERS = 'abcdefghijklmnopqrstuvwxyz'
+
+  const result = []
+
+  for (let char of str) {
+    if (LOWERCASE_LETTERS.includes(char)) {
+      result.push(LOWERCASE_LETTERS[(LOWERCASE_LETTERS.indexOf(char) + shift)])
+    }
+  }
+
+  return result.join('')
 }
 
 
