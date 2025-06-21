@@ -11,3 +11,12 @@ it("shifts multiple lowercase letters correctly", () => {
 it("wraps lowercase letters from z to a", () => {
   expect(caesarCipher('xyz', 3)).toBe('abc')
 })
+
+it("wraps backwards from a to z with negative shift", () => {
+  expect(caesarCipher('abc', -3)).toBe('xyz')
+})
+
+it("handles negative shifts for lowercase letters", () => {
+  expect(caesarCipher('bcd', -1)).toBe('abc')
+})
+
