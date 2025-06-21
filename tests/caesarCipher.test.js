@@ -7,3 +7,7 @@ it("shifts a single letter correctly", () => {
 it("shifts multiple lowercase letters correctly", () => {
   expect(caesarCipher('shift', 1)).toBe('tijgu')
 })
+
+it("wraps lowercase letters from z to a", () => {
+  expect(caesarCipher('xyz', 3)).toBe('abc')
+})
