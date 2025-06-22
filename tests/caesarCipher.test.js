@@ -91,3 +91,19 @@ it("handles large positive shifts", () => {
 it("handles large negative shifts", () => {
   expect(caesarCipher('abc', -26)).toBe('abc')
 })
+
+it('throws a TypeError if shift is null', () => {
+  expect(() => caesarCipher('hello', null)).toThrow('caesarCipher: shift must be a number, received null')
+})
+
+it('throws a TypeError if shift is undefined', () => {
+  expect(() => caesarCipher('hello')).toThrow('caesarCipher: shift parameter is required')
+})
+
+it('throws a TypeError if shift is not a number', () => {
+  expect(() => caesarCipher('hello', 'not a number')).toThrow('caesarCipher: shift must be a number')
+})
+
+it('throws a TypeError if shift is NaN', () => {
+  expect(() => caesarCipher('hello', NaN)).toThrow('caesarCipher: shift must be a valid number')
+})
