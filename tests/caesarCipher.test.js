@@ -39,3 +39,9 @@ it("wraps backwards from A to Z with negative shift", () => {
 it("handles negative shifts for uppercase letters", () => {
   expect(caesarCipher('BCD', -1)).toBe('ABC')
 })
+
+it("preserves case when shifting mixed case letters", () => {
+  expect(caesarCipher('HeLLo', 3)).toBe('KhOOr')
+})
+
+
