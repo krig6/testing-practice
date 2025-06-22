@@ -27,3 +27,7 @@ it("shifts a single uppercase letter correctly", () => {
 it("shifts multiple uppercase letters correctly", () => {
   expect(caesarCipher('DEVELOPER', 10)).toBe('NOFOVYZOB')
 })
+
+it("wraps uppercase letters from z to a", () => {
+  expect(caesarCipher('XYZ', 7)).toBe('EFG')
+})
