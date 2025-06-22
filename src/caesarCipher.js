@@ -13,6 +13,9 @@ export const caesarCipher = (str, shift) => {
     if (UPPERCASE_LETTERS.includes(char)) {
       result.push(UPPERCASE_LETTERS[(UPPERCASE_LETTERS.indexOf(char) + effectiveShift) % 26])
     }
+    if (!UPPERCASE_LETTERS.includes(char) && !LOWERCASE_LETTERS.includes(char)) {
+      result.push(char)
+    }
   }
 
   return result.join('')
