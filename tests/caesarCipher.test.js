@@ -44,4 +44,12 @@ it("preserves case when shifting mixed case letters", () => {
   expect(caesarCipher('HeLLo', 3)).toBe('KhOOr')
 })
 
+it("leaves non-alphabetic characters unchanged", () => {
+  expect(caesarCipher('hello, world!', 1)).toBe('ifmmp, xpsme!')
+})
+
+it("handles strings with numbers and special characters", () => {
+  expect(caesarCipher('abc123XYZ!@#', 1)).toBe('bcd123YZA!@#')
+})
+
 
