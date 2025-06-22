@@ -52,4 +52,30 @@ it("handles strings with numbers and special characters", () => {
   expect(caesarCipher('abc123XYZ!@#', 1)).toBe('bcd123YZA!@#')
 })
 
+it('throws a TypeError if input is undefined', () => {
+  expect(() => caesarCipher()).toThrow('caesarCipher: expected string, received undefined')
+})
 
+it('throws a TypeError if input is an empty string', () => {
+  expect(() => caesarCipher('')).toThrow('caesarCipher: expected non-empty input')
+})
+
+it('throws a TypeError if input is null', () => {
+  expect(() => caesarCipher(null)).toThrow('caesarCipher: expected string, received null')
+})
+
+it('throws a TypeError if input is a number', () => {
+  expect(() => caesarCipher(1337)).toThrow('caesarCipher: expected string, received number')
+})
+
+it('throws a TypeError if input is a boolean', () => {
+  expect(() => caesarCipher(false)).toThrow('caesarCipher: expected string, received boolean')
+})
+
+it('throws a TypeError if input is an array', () => {
+  expect(() => caesarCipher(['not', 'a', 'string'])).toThrow('caesarCipher: expected string, received array')
+})
+
+it('throws a TypeError if input is an object', () => {
+  expect(() => caesarCipher({ framework: 'React' })).toThrow('caesarCipher: expected string, received object')
+})
