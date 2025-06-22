@@ -23,3 +23,7 @@ it("handles negative shifts for lowercase letters", () => {
 it("shifts a single uppercase letter correctly", () => {
   expect(caesarCipher('J', 5)).toBe('O')
 })
+
+it("shifts multiple uppercase letters correctly", () => {
+  expect(caesarCipher('DEVELOPER', 10)).toBe('NOFOVYZOB')
+})
