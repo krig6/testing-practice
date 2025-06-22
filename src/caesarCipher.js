@@ -21,6 +21,19 @@ export const caesarCipher = (str, shift) => {
     throw new TypeError('caesarCipher: expected non-empty input')
   }
 
+  if (typeof shift === 'undefined') {
+    throw new TypeError('caesarCipher: shift parameter is required')
+  }
+  if (shift === null) {
+    throw new TypeError('caesarCipher: shift must be a number, received null')
+  }
+  if (typeof shift === 'string') {
+    throw new TypeError('caesarCipher: shift must be a number')
+  }
+  if (isNaN(shift)) {
+    throw new TypeError('caesarCipher: shift must be a valid number')
+  }
+
   const LOWERCASE_LETTERS = 'abcdefghijklmnopqrstuvwxyz'
 
   const UPPERCASE_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
