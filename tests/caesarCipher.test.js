@@ -31,3 +31,11 @@ it("shifts multiple uppercase letters correctly", () => {
 it("wraps uppercase letters from z to a", () => {
   expect(caesarCipher('XYZ', 7)).toBe('EFG')
 })
+
+it("wraps backwards from A to Z with negative shift", () => {
+  expect(caesarCipher('ABC', -3)).toBe('XYZ')
+})
+
+it("handles negative shifts for uppercase letters", () => {
+  expect(caesarCipher('BCD', -1)).toBe('ABC')
+})
