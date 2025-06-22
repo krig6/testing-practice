@@ -79,3 +79,15 @@ it('throws a TypeError if input is an array', () => {
 it('throws a TypeError if input is an object', () => {
   expect(() => caesarCipher({ framework: 'React' })).toThrow('caesarCipher: expected string, received object')
 })
+
+it("handles zero shift", () => {
+  expect(caesarCipher('hello', 0)).toBe('hello')
+})
+
+it("handles large positive shifts", () => {
+  expect(caesarCipher('abc', 26)).toBe('abc') // 26 is full alphabet cycle
+})
+
+it("handles large negative shifts", () => {
+  expect(caesarCipher('abc', -26)).toBe('abc')
+})
