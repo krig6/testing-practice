@@ -1,109 +1,119 @@
 import { caesarCipher } from "../src/caesarCipher";
 
-it("shifts a single lowercase letter correctly", () => {
-  expect(caesarCipher('a', 1)).toBe('b')
-})
+describe("caesarCipher", () => {
+  describe("basic functionality", () => {
+    it("shifts a single lowercase letter correctly", () => {
+      expect(caesarCipher('a', 1)).toBe('b')
+    })
 
-it("shifts multiple lowercase letters correctly", () => {
-  expect(caesarCipher('shift', 1)).toBe('tijgu')
-})
+    it("shifts multiple lowercase letters correctly", () => {
+      expect(caesarCipher('shift', 1)).toBe('tijgu')
+    })
 
-it("wraps lowercase letters from z to a", () => {
-  expect(caesarCipher('xyz', 3)).toBe('abc')
-})
+    it("shifts a single uppercase letter correctly", () => {
+      expect(caesarCipher('J', 5)).toBe('O')
+    })
 
-it("wraps backwards from a to z with negative shift", () => {
-  expect(caesarCipher('abc', -3)).toBe('xyz')
-})
+    it("shifts multiple uppercase letters correctly", () => {
+      expect(caesarCipher('DEVELOPER', 10)).toBe('NOFOVYZOB')
+    })
+  })
 
-it("handles negative shifts for lowercase letters", () => {
-  expect(caesarCipher('bcd', -1)).toBe('abc')
-})
+  describe("string parameter validation", () => {
+    it('throws a TypeError if input is undefined', () => {
+      expect(() => caesarCipher()).toThrow('caesarCipher: expected string, received undefined')
+    })
 
-it("shifts a single uppercase letter correctly", () => {
-  expect(caesarCipher('J', 5)).toBe('O')
-})
+    it('throws a TypeError if input is an empty string', () => {
+      expect(() => caesarCipher('')).toThrow('caesarCipher: expected non-empty input')
+    })
 
-it("shifts multiple uppercase letters correctly", () => {
-  expect(caesarCipher('DEVELOPER', 10)).toBe('NOFOVYZOB')
-})
+    it('throws a TypeError if input is null', () => {
+      expect(() => caesarCipher(null)).toThrow('caesarCipher: expected string, received null')
+    })
 
-it("wraps uppercase letters from z to a", () => {
-  expect(caesarCipher('XYZ', 7)).toBe('EFG')
-})
+    it('throws a TypeError if input is a number', () => {
+      expect(() => caesarCipher(1337)).toThrow('caesarCipher: expected string, received number')
+    })
 
-it("wraps backwards from A to Z with negative shift", () => {
-  expect(caesarCipher('ABC', -3)).toBe('XYZ')
-})
+    it('throws a TypeError if input is a boolean', () => {
+      expect(() => caesarCipher(false)).toThrow('caesarCipher: expected string, received boolean')
+    })
 
-it("handles negative shifts for uppercase letters", () => {
-  expect(caesarCipher('BCD', -1)).toBe('ABC')
-})
+    it('throws a TypeError if input is an array', () => {
+      expect(() => caesarCipher(['not', 'a', 'string'])).toThrow('caesarCipher: expected string, received array')
+    })
 
-it("preserves case when shifting mixed case letters", () => {
-  expect(caesarCipher('HeLLo', 3)).toBe('KhOOr')
-})
+    it('throws a TypeError if input is an object', () => {
+      expect(() => caesarCipher({ framework: 'React' })).toThrow('caesarCipher: expected string, received object')
+    })
+  })
 
-it("leaves non-alphabetic characters unchanged", () => {
-  expect(caesarCipher('hello, world!', 1)).toBe('ifmmp, xpsme!')
-})
+  describe("shift parameter validation", () => {
+    it('throws a TypeError if shift is null', () => {
+      expect(() => caesarCipher('hello', null)).toThrow('caesarCipher: shift must be a number, received null')
+    })
 
-it("handles strings with numbers and special characters", () => {
-  expect(caesarCipher('abc123XYZ!@#', 1)).toBe('bcd123YZA!@#')
-})
+    it('throws a TypeError if shift is undefined', () => {
+      expect(() => caesarCipher('hello')).toThrow('caesarCipher: shift parameter is required')
+    })
 
-it('throws a TypeError if input is undefined', () => {
-  expect(() => caesarCipher()).toThrow('caesarCipher: expected string, received undefined')
-})
+    it('throws a TypeError if shift is not a number', () => {
+      expect(() => caesarCipher('hello', 'not a number')).toThrow('caesarCipher: shift must be a number')
+    })
 
-it('throws a TypeError if input is an empty string', () => {
-  expect(() => caesarCipher('')).toThrow('caesarCipher: expected non-empty input')
-})
+    it('throws a TypeError if shift is NaN', () => {
+      expect(() => caesarCipher('hello', NaN)).toThrow('caesarCipher: shift must be a valid number')
+    })
+  })
 
-it('throws a TypeError if input is null', () => {
-  expect(() => caesarCipher(null)).toThrow('caesarCipher: expected string, received null')
-})
+  describe("wrapping and edge cases", () => {
+    it("wraps lowercase letters from z to a", () => {
+      expect(caesarCipher('xyz', 3)).toBe('abc')
+    })
 
-it('throws a TypeError if input is a number', () => {
-  expect(() => caesarCipher(1337)).toThrow('caesarCipher: expected string, received number')
-})
+    it("wraps backwards from a to z with negative shift", () => {
+      expect(caesarCipher('abc', -3)).toBe('xyz')
+    })
 
-it('throws a TypeError if input is a boolean', () => {
-  expect(() => caesarCipher(false)).toThrow('caesarCipher: expected string, received boolean')
-})
+    it("handles negative shifts for lowercase letters", () => {
+      expect(caesarCipher('bcd', -1)).toBe('abc')
+    })
 
-it('throws a TypeError if input is an array', () => {
-  expect(() => caesarCipher(['not', 'a', 'string'])).toThrow('caesarCipher: expected string, received array')
-})
+    it("wraps uppercase letters from z to a", () => {
+      expect(caesarCipher('XYZ', 7)).toBe('EFG')
+    })
 
-it('throws a TypeError if input is an object', () => {
-  expect(() => caesarCipher({ framework: 'React' })).toThrow('caesarCipher: expected string, received object')
-})
+    it("wraps backwards from A to Z with negative shift", () => {
+      expect(caesarCipher('ABC', -3)).toBe('XYZ')
+    })
 
-it("handles zero shift", () => {
-  expect(caesarCipher('hello', 0)).toBe('hello')
-})
+    it("handles negative shifts for uppercase letters", () => {
+      expect(caesarCipher('BCD', -1)).toBe('ABC')
+    })
 
-it("handles large positive shifts", () => {
-  expect(caesarCipher('abc', 26)).toBe('abc') // 26 is full alphabet cycle
-})
+    it("preserves case when shifting mixed case letters", () => {
+      expect(caesarCipher('HeLLo', 3)).toBe('KhOOr')
+    })
 
-it("handles large negative shifts", () => {
-  expect(caesarCipher('abc', -26)).toBe('abc')
-})
+    it("leaves non-alphabetic characters unchanged", () => {
+      expect(caesarCipher('hello, world!', 1)).toBe('ifmmp, xpsme!')
+    })
 
-it('throws a TypeError if shift is null', () => {
-  expect(() => caesarCipher('hello', null)).toThrow('caesarCipher: shift must be a number, received null')
-})
+    it("handles strings with numbers and special characters", () => {
+      expect(caesarCipher('abc123XYZ!@#', 1)).toBe('bcd123YZA!@#')
+    })
 
-it('throws a TypeError if shift is undefined', () => {
-  expect(() => caesarCipher('hello')).toThrow('caesarCipher: shift parameter is required')
-})
+    it("handles zero shift", () => {
+      expect(caesarCipher('hello', 0)).toBe('hello')
+    })
 
-it('throws a TypeError if shift is not a number', () => {
-  expect(() => caesarCipher('hello', 'not a number')).toThrow('caesarCipher: shift must be a number')
-})
+    it("handles large positive shifts", () => {
+      expect(caesarCipher('abc', 26)).toBe('abc') // 26 is full alphabet cycle
+    })
 
-it('throws a TypeError if shift is NaN', () => {
-  expect(() => caesarCipher('hello', NaN)).toThrow('caesarCipher: shift must be a valid number')
+    it("handles large negative shifts", () => {
+      expect(caesarCipher('abc', -26)).toBe('abc')
+    })
+  })
 })
