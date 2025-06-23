@@ -51,19 +51,19 @@ describe("caesarCipher", () => {
 
   describe("shift parameter validation", () => {
     it('throws a TypeError if shift is null', () => {
-      expect(() => caesarCipher('hello', null)).toThrow('caesarCipher: shift must be a number, received null')
+      expect(() => caesarCipher('hello', null)).toThrow('caesarCipher: expected number, received null')
     })
 
     it('throws a TypeError if shift is undefined', () => {
-      expect(() => caesarCipher('hello')).toThrow('caesarCipher: shift parameter is required')
+      expect(() => caesarCipher('hello')).toThrow('caesarCipher: expected number, received undefined')
     })
 
     it('throws a TypeError if shift is not a number', () => {
-      expect(() => caesarCipher('hello', 'not a number')).toThrow('caesarCipher: shift must be a number')
+      expect(() => caesarCipher('hello', 'not a number')).toThrow('caesarCipher: expected number, received string')
     })
 
     it('throws a TypeError if shift is NaN', () => {
-      expect(() => caesarCipher('hello', NaN)).toThrow('caesarCipher: shift must be a valid number')
+      expect(() => caesarCipher('hello', NaN)).toThrow('caesarCipher: shift expected to be a valid number')
     })
   })
 
