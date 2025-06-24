@@ -1,45 +1,56 @@
-export const validateInput = (func, str) => {
-  switch (func) {
-    case 'capitalize':
-    case 'reverseString':
-      if (typeof str === 'undefined') {
-        throw new TypeError(createErrorMessage(func, 'undefined'))
-      }
-      if (str === null) {
-        throw new TypeError(createErrorMessage(func, 'null'))
-      }
-      if (str === '') {
-        throw new TypeError(createErrorMessage(func, 'empty'))
-      }
-      if (Array.isArray(str)) {
-        throw new TypeError(createErrorMessage(func, 'array'))
-      }
-      if (typeof str !== 'string') {
-        throw new TypeError(createErrorMessage(func, typeof str))
-      }
+export const validateInput = (funcName, input, expected) => {
+  const type = typeof input
+  if (type === 'undefined') {
+    throw new TypeError(createErrorMessage(funcName, 'undefined', expected))
+  }
+  if (input === null) {
+    throw new TypeError(createErrorMessage(funcName, 'null', expected))
+  }
+  if (Array.isArray(input)) {
+    throw new TypeError(createErrorMessage(funcName, 'array', expected))
+  }
+  if (input === '') {
+    throw new TypeError(createErrorMessage(funcName, 'empty', expected))
+  }
+
+  switch (expected) {
+    case 'string':
+      validateString(funcName, type)
       break
-    case 'calculator':
-      if (typeof str !== 'number') {
-        throw new TypeError(createErrorMessage(func, typeof str))
+    case 'number':
+      validateNumber(funcName, type)
+      if (Number.isNaN(input)) {
+        throw new TypeError(createErrorMessage(funcName, 'isNaN', expected))
       }
       break
   }
 }
 
-export const createErrorMessage = (func, inputType) => {
+const validateString = (funcName, type) => {
+  if (type !== 'string') {
+    throw new TypeError(createErrorMessage(funcName, type, 'string'))
+  }
+}
+
+const validateNumber = (funcName, type) => {
+  if (type !== 'number') {
+    throw new TypeError(createErrorMessage(funcName, type, 'number'))
+  }
+}
+
+export const createErrorMessage = (funcName, inputType, expected) => {
   const errorMessages = {
-    'number': `${func}: expected string, received number`,
-    'boolean': `${func}: expected string, received boolean`,
-    'object': `${func}: expected string, received object`,
-    'null': `${func}: expected string, received null`,
-    'undefined': `${func}: expected string, received undefined`,
-    'array': `${func}: expected string, received array`,
-    'empty': `${func}: expected non-empty string`,
-    'string': `${func}: expected number, received string`,
-    'zero': `${func}: expected non-zero divisor`
+    'number': `${funcName}: expected ${expected}, received number`,
+    'string': `${funcName}: expected ${expected}, received string`,
+    'boolean': `${funcName}: expected ${expected}, received boolean`,
+    'object': `${funcName}: expected ${expected}, received object`,
+    'null': `${funcName}: expected ${expected}, received null`,
+    'undefined': `${funcName}: expected ${expected}, received undefined`,
+    'array': `${funcName}: expected ${expected}, received array`,
+    'empty': `${funcName}: expected non-empty input`,
+    'zero': `${funcName}: expected non-zero divisor`,
+    'isNaN': `${funcName}: shift expected to be a valid number`
   }
 
-  return errorMessages[inputType] || `${func}: unexpected input type`
+  return errorMessages[inputType] || `${funcName}: unexpected input type`
 }
-
-
