@@ -35,3 +35,13 @@ it("correctly analyzes an array with mixed positive and negative numbers", () =>
     length: 5
   });
 });
+
+
+it("correctly analyzes an array with repeating decimal average result", () => {
+  expect(analyzeArray([7, 11, 13])).toStrictEqual({
+    average: 10.33,
+    min: 7,
+    max: 13,
+    length: 3
+  });
+});
