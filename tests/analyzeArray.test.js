@@ -17,3 +17,12 @@ it("correctly analyzes an array with different numbers", () => {
     length: 3
   });
 });
+
+it("correctly analyzes an array with negative numbers", () => {
+  expect(analyzeArray([-5, -10, -15])).toStrictEqual({
+    average: -10,
+    min: -15,
+    max: -5,
+    length: 3
+  });
+});
