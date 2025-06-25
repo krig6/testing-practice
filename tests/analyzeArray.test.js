@@ -26,3 +26,12 @@ it("correctly analyzes an array with negative numbers", () => {
     length: 3
   });
 });
+
+it("correctly analyzes an array with mixed positive and negative numbers", () => {
+  expect(analyzeArray([50, -100, 25, 30, -37])).toStrictEqual({
+    average: -6.4,
+    min: -100,
+    max: 50,
+    length: 5
+  });
+});
