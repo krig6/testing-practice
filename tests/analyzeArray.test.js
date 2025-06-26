@@ -63,3 +63,12 @@ it("correctly analyzes an array containing zeros", () => {
     length: 4
   });
 });
+
+it("correctly analyzes an array with duplicate values", () => {
+  expect(analyzeArray([5, 50, 5, 10, 5])).toStrictEqual({
+    average: 15,
+    min: 5,
+    max: 50,
+    length: 5
+  });
+});
