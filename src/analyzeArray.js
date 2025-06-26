@@ -1,4 +1,7 @@
 export const analyzeArray = (arr) => {
+  if (arr.length <= 0) {
+    throw new Error("analyzeArray: expected non-empty input")
+  }
   const length = arr.length
   const sum = arr.reduce((acc, curr) => acc + curr, 0)
   const average = Number((sum / length).toFixed(2))
