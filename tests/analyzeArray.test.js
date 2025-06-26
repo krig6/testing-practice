@@ -76,3 +76,22 @@ it("correctly analyzes an array with duplicate values", () => {
 it("throws an error on empty array input", () => {
   expect(() => analyzeArray([])).toThrow("analyzeArray: expected non-empty input");
 });
+
+it("throws an error if array contains a boolean", () => {
+  expect(() => analyzeArray([true, 5])).toThrow("analyzeArray: expected number, received boolean")
+})
+it("throws an error if array contains a string", () => {  // ← Change "strings" to "a string"
+  expect(() => analyzeArray([1, "5", 3])).toThrow("analyzeArray: expected number, received string");
+});
+it("throws an error if array contains an object", () => {  // ← Change "objects" to "an object"
+  expect(() => analyzeArray([1, {}, 3])).toThrow("analyzeArray: expected number, received object");
+});
+it("throws an error if array contains null", () => {
+  expect(() => analyzeArray([1, null, 3])).toThrow("analyzeArray: expected number, received null");
+});
+it("throws an error if array contains undefined", () => {
+  expect(() => analyzeArray([1, undefined, 3])).toThrow("analyzeArray: expected number, received undefined");
+});
+it("throws an error if array contains NaN", () => {
+  expect(() => analyzeArray([1, NaN, 3])).toThrow("analyzeArray: expected number, received NaN");
+});
