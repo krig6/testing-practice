@@ -72,3 +72,7 @@ it("correctly analyzes an array with duplicate values", () => {
     length: 5
   });
 });
+
+it("throws an error on empty array input", () => {
+  expect(() => analyzeArray([])).toThrow("analyzeArray: expected non-empty input");
+});
