@@ -54,3 +54,12 @@ it("correctly analyzes a single-element array", () => {
     length: 1
   });
 });
+
+it("correctly analyzes an array containing zeros", () => {
+  expect(analyzeArray([25, 0, 35, 0])).toStrictEqual({
+    average: 15,
+    min: 0,
+    max: 35,
+    length: 4
+  });
+});
