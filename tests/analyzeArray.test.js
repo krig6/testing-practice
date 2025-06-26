@@ -45,3 +45,12 @@ it("correctly analyzes an array with repeating decimal average result", () => {
     length: 3
   });
 });
+
+it("correctly analyzes a single-element array", () => {
+  expect(analyzeArray([10])).toStrictEqual({
+    average: 10,
+    min: 10,
+    max: 10,
+    length: 1
+  });
+});
