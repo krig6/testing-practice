@@ -1,42 +1,42 @@
 export const validateInput = (funcName, input, expected) => {
-  const type = typeof input
+  const type = typeof input;
   if (type === 'undefined') {
-    throw new TypeError(createErrorMessage(funcName, 'undefined', expected))
+    throw new TypeError(createErrorMessage(funcName, 'undefined', expected));
   }
   if (input === null) {
-    throw new TypeError(createErrorMessage(funcName, 'null', expected))
+    throw new TypeError(createErrorMessage(funcName, 'null', expected));
   }
   if (Array.isArray(input)) {
-    throw new TypeError(createErrorMessage(funcName, 'array', expected))
+    throw new TypeError(createErrorMessage(funcName, 'array', expected));
   }
   if (input === '') {
-    throw new TypeError(createErrorMessage(funcName, 'empty', expected))
+    throw new TypeError(createErrorMessage(funcName, 'empty', expected));
   }
 
   switch (expected) {
     case 'string':
-      validateString(funcName, type)
-      break
+      validateString(funcName, type);
+      break;
     case 'number':
-      validateNumber(funcName, type)
+      validateNumber(funcName, type);
       if (Number.isNaN(input)) {
-        throw new TypeError(createErrorMessage(funcName, 'isNaN', expected))
+        throw new TypeError(createErrorMessage(funcName, 'isNaN', expected));
       }
-      break
+      break;
   }
-}
+};
 
 const validateString = (funcName, type) => {
   if (type !== 'string') {
-    throw new TypeError(createErrorMessage(funcName, type, 'string'))
+    throw new TypeError(createErrorMessage(funcName, type, 'string'));
   }
-}
+};
 
 const validateNumber = (funcName, type) => {
   if (type !== 'number') {
-    throw new TypeError(createErrorMessage(funcName, type, 'number'))
+    throw new TypeError(createErrorMessage(funcName, type, 'number'));
   }
-}
+};
 
 export const createErrorMessage = (funcName, inputType, expected) => {
   const errorMessages = {
@@ -52,7 +52,7 @@ export const createErrorMessage = (funcName, inputType, expected) => {
     'isNaN': funcName === 'caesarCipher'
       ? `${funcName}: shift expected to be a valid number`
       : `${funcName}: expected number, received NaN`
-  }
+  };
 
-  return errorMessages[inputType] || `${funcName}: unexpected input type`
-}
+  return errorMessages[inputType] || `${funcName}: unexpected input type`;
+};
