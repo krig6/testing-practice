@@ -49,7 +49,9 @@ export const createErrorMessage = (funcName, inputType, expected) => {
     'array': `${funcName}: expected ${expected}, received array`,
     'empty': `${funcName}: expected non-empty input`,
     'zero': `${funcName}: expected non-zero divisor`,
-    'isNaN': `${funcName}: shift expected to be a valid number`
+    'isNaN': funcName === 'caesarCipher'
+      ? `${funcName}: shift expected to be a valid number`
+      : `${funcName}: expected number, received NaN`
   }
 
   return errorMessages[inputType] || `${funcName}: unexpected input type`
