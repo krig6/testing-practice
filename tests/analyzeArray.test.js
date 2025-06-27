@@ -80,7 +80,7 @@ describe("analyzeArray", () => {
 
   describe("error handling", () => {
     it("throws an error on empty array input", () => {
-      expect(() => analyzeArray([])).toThrow("analyzeArray: expected non-empty input");
+      expect(() => analyzeArray([])).toThrow("analyzeArray: array cannot be empty");
     });
 
     it("throws an error if array contains a boolean", () => {
